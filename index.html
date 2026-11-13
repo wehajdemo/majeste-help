@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="دليل استخدام ثيم ماجيستي لمتاجر سلة: التثبيت، الإعدادات، الأقسام، مقاسات الصور، والأسئلة الشائعة.">
+<title>دليل ثيم ماجيستي</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=El+Messiri:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: one reading column, a sticky section index on wide screens, gold used only for marks and links. */
+:root{
+  --bg:#fbfaf8; --surface:#ffffff; --ink:#16130f; --muted:#6f675c; --line:#e7e0d4; --gold:#9a7433; --gold-soft:#f3ecdf;
+  --display:'El Messiri','IBM Plex Sans Arabic',serif; --body:'IBM Plex Sans Arabic',system-ui,sans-serif; --latin:'Cormorant Garamond',Georgia,serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f0e0c;--surface:#171512;--ink:#f1ebe1;--muted:#a59c8f;--line:#2c2823;--gold:#d2b47a;--gold-soft:#231f19;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f0e0c;--surface:#171512;--ink:#f1ebe1;--muted:#a59c8f;--line:#2c2823;--gold:#d2b47a;--gold-soft:#231f19;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.8;direction:rtl;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px}
+@media (max-width:860px){.wrap{grid-template-columns:minmax(0,1fr)}.toc{display:none}}
+header{max-width:1080px;margin:0 auto;padding-block:48px 32px;border-bottom:1px solid var(--line);margin-bottom:40px;display:grid;gap:10px}
+.mark{display:flex;align-items:center;gap:12px;color:var(--gold)}
+.mark svg{width:40px;height:26px}
+.mark span{font-family:var(--latin);font-size:24px;letter-spacing:.3em;direction:ltr}
+h1{font-family:var(--display);font-size:clamp(30px,5vw,44px);line-height:1.25;margin:0;text-wrap:balance}
+.lead{color:var(--muted);max-width:62ch;margin:0}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;display:grid;gap:4px;font-size:14px}
+.toc a{color:var(--muted);text-decoration:none;padding:6px 12px;border-inline-start:2px solid var(--line)}
+.toc a:hover,.toc a:focus-visible{color:var(--ink);border-color:var(--gold);outline:none}
+main{display:grid;gap:56px;min-width:0}
+section{display:grid;gap:16px;min-width:0;scroll-margin-top:24px}
+h2{font-family:var(--display);font-size:26px;margin:0;display:flex;align-items:baseline;gap:10px}
+h2 small{font-family:var(--body);font-size:13px;color:var(--gold);letter-spacing:.04em}
+p{margin:0;max-width:66ch}
+a{color:var(--gold)}
+ol.steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:s}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;align-items:start}
+ol.steps li::before{content:counter(s);width:36px;height:36px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:600;font-variant-numeric:tabular-nums}
+ol.steps b{display:block}
+.path{display:inline-block;background:var(--gold-soft);padding:1px 8px;border-radius:6px;font-size:14px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:right;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:13px}
+tr:last-child td{border-bottom:0}
+td:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.search{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.search input{flex:1;min-width:0;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit}
+.search input:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.filters{display:flex;gap:6px}
+.filters button{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:99px;padding:7px 14px;font:inherit;font-size:14px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+ul.secs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+li.sec{position:relative;display:grid;gap:4px;padding:16px 16px 16px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface);min-width:0}
+li.sec b{font-weight:600;padding-inline-end:64px}
+li.sec span{color:var(--muted);font-size:14px;line-height:1.7}
+li.sec em{position:absolute;top:14px;inset-inline-end:14px;font-style:normal;font-size:11px;letter-spacing:.04em;color:var(--gold);border:1px solid var(--gold);border-radius:99px;padding:1px 8px}
+li.sec em.base{color:var(--muted);border-color:var(--line)}
+.count{color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:14px 18px}
+details+details{margin-top:-4px}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--gold);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:var(--muted)}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.contact div{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--surface);display:grid;gap:4px;min-width:0}
+.contact small{color:var(--muted)}
+.contact b{direction:ltr;text-align:right;overflow-wrap:anywhere}
+.contact a{font-size:14px;width:fit-content}
+footer{max-width:1080px;margin:56px auto 0;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+<style>*,*::before,*::after{box-sizing:border-box}html{color-scheme:light}body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<header>
+  <div class="mark"><svg viewBox="0 0 48 30" aria-hidden="true"><path d="M5 24 3 8l11 8 10-13 10 13 11-8-2 16Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 28h36" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="3" cy="7" r="2" fill="currentColor"/><circle cx="24" cy="2.6" r="2.2" fill="currentColor"/><circle cx="45" cy="7" r="2" fill="currentColor"/></svg><span>MAJESTÉ</span></div>
+  <h1>دليل استخدام ثيم ماجيستي</h1>
+  <p class="lead">كل ما تحتاجه لتجهيز متجرك على سلة بثيم ماجيستي: التثبيت، الإعدادات، الأقسام الخمسة والثلاثين، مقاسات الصور، والأسئلة الشائعة.</p>
+</header>
+<div class="wrap">
+  <nav class="toc" aria-label="محتويات الدليل">
+    <a href="#start">البداية السريعة</a>
+    <a href="#settings">إعدادات الثيم</a>
+    <a href="#sections">أقسام الصفحة الرئيسية</a>
+    <a href="#images">مقاسات الصور</a>
+    <a href="#faq">أسئلة شائعة</a>
+    <a href="#support">الدعم الفني</a>
+  </nav>
+  <main>
+    <section id="start">
+      <h2>البداية السريعة <small>6 خطوات</small></h2>
+      <ol class="steps">
+        <li><div><b>ثبّت الثيم</b>من متجر ثيمات سلة اختر ماجيستي واضغط <span class="path">تثبيت</span>.</div></li>
+        <li><div><b>افتح المحرر</b>من لوحة تحكم متجرك افتح صفحة تصميم المتجر واضغط <span class="path">تخصيص</span> على ماجيستي. تظهر معاينة حية لمتجرك.</div></li>
+        <li><div><b>اختر ألوانك</b>من <span class="path">إعدادات الثيم ← ماجيستي</span> غيّر اللون الذهبي واللون الداكن ليطابقا هويتك.</div></li>
+        <li><div><b>أضف الأقسام</b>اضغط <span class="path">⊕ إضافة عنصر جديد</span> واختر الأقسام التي تبدأ بـ «ماجيستي:»، ثم رتّبها بالسحب.</div></li>
+        <li><div><b>ضع صورك ونصوصك</b>كل قسم فيه شرح قصير والمقاس المناسب للصور. اترك أي حقل فارغاً ليُخفى.</div></li>
+        <li><div><b>انشر</b>اضغط حفظ ثم نشر. يظهر التصميم للعملاء مباشرة.</div></li>
+      </ol>
+    </section>
+
+    <section id="settings">
+      <h2>إعدادات الثيم</h2>
+      <p>تجدها في المحرر تحت <span class="path">إعدادات الثيم</span>. إعدادات ماجيستي في آخر القائمة.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>الإعداد</th><th>ماذا يفعل</th><th>الافتراضي</th></tr></thead>
+        <tbody>
+          <tr><td>شريط الإعلانات</td><td>رسائل قصيرة تتحرك أعلى المتجر. اكتب كل رسالة في سطر.</td><td>4 رسائل</td></tr>
+          <tr><td>رقم واتساب</td><td>زر واتساب عائم، ويُستخدم أيضاً في نموذج التواصل. اكتبه بالصيغة الدولية مثل 9665XXXXXXXX.</td><td>فارغ</td></tr>
+          <tr><td>اللون الذهبي</td><td>لون التمييز: العناوين الصغيرة، الأيقونات، الحدود.</td><td>#b8975a</td></tr>
+          <tr><td>اللون الداكن</td><td>لون النصوص والأزرار الأساسي.</td><td>#0e0d0c</td></tr>
+          <tr><td>خطوط العناوين الفاخرة</td><td>المسيري للعربي وكورموران للاتيني. أوقفه لاستخدام خط متجرك.</td><td>مفعّل</td></tr>
+          <tr><td>شعار نصّي فاخر</td><td>يعرض التاج واسم المتجر بدل صورة الشعار.</td><td>مفعّل</td></tr>
+          <tr><td>زر الوضع الليلي</td><td>زر في الهيدر يبدّل بين الفاتح والداكن، ويتذكّر اختيار العميل.</td><td>مفعّل</td></tr>
+          <tr><td>شريط تنقّل سفلي</td><td>شريط على الجوال: الرئيسية، الأقسام، البحث، السلة، الحساب.</td><td>مفعّل</td></tr>
+          <tr><td>تثبيت القائمة</td><td>تبقى القائمة الرئيسية ظاهرة أثناء التمرير.</td><td>مفعّل</td></tr>
+          <tr><td>تثبيت زر الإضافة للسلة</td><td>زر الإضافة والكمية يبقى أسفل شاشة الجوال في صفحة المنتج.</td><td>مفعّل</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="sections">
+      <h2>أقسام الصفحة الرئيسية <small id="count" class="count"></small></h2>
+      <p>29 قسماً خاصاً بماجيستي و6 أقسام أساسية من سلة. ابحث باسم القسم أو بما تريد عرضه.</p>
+      <div class="search">
+        <input id="q" aria-label="بحث في الأقسام" type="search" placeholder="مثلاً: عدّاد، فيديو، واتساب، ماركات" autocomplete="off">
+        <div class="filters" role="group" aria-label="تصفية">
+          <button type="button" data-f="all" aria-pressed="true">الكل</button>
+          <button type="button" data-f="mj" aria-pressed="false">ماجيستي</button>
+          <button type="button" data-f="base" aria-pressed="false">أساسي</button>
+        </div>
+      </div>
+      <ul class="secs" id="secs">
+<li class="sec" data-q="صور متحركة (محسنة) سلايدر صور عريض بعناوين وأزرار، من أقسام سلة الأساسية."><b>صور متحركة (محسنة)</b><span>سلايدر صور عريض بعناوين وأزرار، من أقسام سلة الأساسية.</span><em class=base>أساسي</em></li>
+<li class="sec" data-q="روابط سريعة أيقونات أو صور صغيرة تنقل العميل لأهم الأقسام."><b>روابط سريعة</b><span>أيقونات أو صور صغيرة تنقل العميل لأهم الأقسام.</span><em class=base>أساسي</em></li>
+<li class="sec" data-q="منتجات متحركة مع خلفية شريط منتجات متحرك فوق صورة خلفية مع عنوان."><b>منتجات متحركة مع خلفية</b><span>شريط منتجات متحرك فوق صورة خلفية مع عنوان.</span><em class=base>أساسي</em></li>
+<li class="sec" data-q="صور مربعة (محسنة) مجموعة صور مربعة قابلة للنقر لعرض الأقسام أو العروض."><b>صور مربعة (محسنة)</b><span>مجموعة صور مربعة قابلة للنقر لعرض الأقسام أو العروض.</span><em class=base>أساسي</em></li>
+<li class="sec" data-q="الماركات التجارية شعارات الماركات التي يبيعها متجرك."><b>الماركات التجارية</b><span>شعارات الماركات التي يبيعها متجرك.</span><em class=base>أساسي</em></li>
+<li class="sec" data-q="آراء عملاء مخصصة آراء تكتبها بنفسك مع الاسم والصورة والتقييم."><b>آراء عملاء مخصصة</b><span>آراء تكتبها بنفسك مع الاسم والصورة والتقييم.</span><em class=base>أساسي</em></li>
+<li class="sec is-mj" data-q="واجهة القصص شرائح بملء الشاشة بأسلوب القصص مع شريط تقدّم. المقاس المناسب للصورة 1600×2000 بكسل (عمودي) أو 2400×1350 (أفقي)."><b>واجهة القصص</b><span>شرائح بملء الشاشة بأسلوب القصص مع شريط تقدّم. المقاس المناسب للصورة 1600×2000 بكسل (عمودي) أو 2400×1350 (أفقي).</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="شريط الثقة أربع مزايا قصيرة تحت الواجهة: الشحن، الدفع الآمن، الاستبدال، التغليف."><b>شريط الثقة</b><span>أربع مزايا قصيرة تحت الواجهة: الشحن، الدفع الآمن، الاستبدال، التغليف.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="لوحات أقسام كبيرة لوحتان أو ثلاث بصور كبيرة توجّه العميل لأهم أقسامك، مثل: نساء / رجال / أطفال، أو عطور / مكياج، أو جوالات / إكسسوارات. المقاس المناسب 1200×1400 بكسل."><b>لوحات أقسام كبيرة</b><span>لوحتان أو ثلاث بصور كبيرة توجّه العميل لأهم أقسامك، مثل: نساء / رجال / أطفال، أو عطور / مكياج، أو جوالات / إكسسوارات. المقاس المناسب 1200×1400 بكسل.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="الفئات بطاقات صور لأقسام متجرك تمرَّر أفقياً."><b>الفئات</b><span>بطاقات صور لأقسام متجرك تمرَّر أفقياً.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="منتجات بتبويبات حتى ٤ تبويبات (مثلاً: الأكثر مبيعاً · وصل حديثاً · عروض · قسم من اختيارك). التبويب بدون عنوان أو منتجات يُخفى تلقائياً."><b>منتجات بتبويبات</b><span>حتى ٤ تبويبات (مثلاً: الأكثر مبيعاً · وصل حديثاً · عروض · قسم من اختيارك). التبويب بدون عنوان أو منتجات يُخفى تلقائياً.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="تسوّق من المقاطع مقاطع عمودية بأسلوب تيك توك/ريلز. يُربط المنتج الأول بالمقطع الأول وهكذا. ارفع الفيديو (MP4 عمودي، أقل من 8 ميجا) وضع رابطه، أو اكتفِ بالصورة."><b>تسوّق من المقاطع</b><span>مقاطع عمودية بأسلوب تيك توك/ريلز. يُربط المنتج الأول بالمقطع الأول وهكذا. ارفع الفيديو (MP4 عمودي، أقل من 8 ميجا) وضع رابطه، أو اكتفِ بالصورة.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="تسوّق المجموعة / الإطلالة صورة واحدة مع نقاط مرقّمة على كل منتج فيها: إطلالة كاملة، روتين عناية، طقم هدايا، أو مكتب متكامل. يضيف العميل المجموعة كلها للسلة بضغطة، والمنتجات التي لها خيارات (مقاس، لون…) تُفتح صفحتها للاختيار. لتقديم خصم على المجموعة أنشئ &quot;عرضاً خاصاً&quot; من لوحة سلة."><b>تسوّق المجموعة / الإطلالة</b><span>صورة واحدة مع نقاط مرقّمة على كل منتج فيها: إطلالة كاملة، روتين عناية، طقم هدايا، أو مكتب متكامل. يضيف العميل المجموعة كلها للسلة بضغطة، والمنتجات التي لها خيارات (مقاس، لون…) تُفتح صفحتها للاختيار. لتقديم خصم على المجموعة أنشئ &quot;عرضاً خاصاً&quot; من لوحة سلة.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="قسم تحريري صورة كبيرة ونص قصير يحكي قصة مجموعة أو منتج."><b>قسم تحريري</b><span>صورة كبيرة ونص قصير يحكي قصة مجموعة أو منتج.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="عرض بعدّاد يختفي القسم تلقائياً بعد انتهاء العرض."><b>عرض بعدّاد</b><span>يختفي القسم تلقائياً بعد انتهاء العرض.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="أرقام أرقام وإنجازات المتجر تظهر بعدّاد متحرك."><b>أرقام</b><span>أرقام وإنجازات المتجر تظهر بعدّاد متحرك.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="أسئلة متكررة أسئلة وأجوبة قابلة للطي، مثل الشحن والاستبدال والدفع."><b>أسئلة متكررة</b><span>أسئلة وأجوبة قابلة للطي، مثل الشحن والاستبدال والدفع.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="قبل وبعد صورتان بنفس المقاس، ويسحب العميل الخط بينهما للمقارنة: قبل وبعد العناية، المنتج قبل وبعد التركيب، اللون الأصلي والجديد…"><b>قبل وبعد</b><span>صورتان بنفس المقاس، ويسحب العميل الخط بينهما للمقارنة: قبل وبعد العناية، المنتج قبل وبعد التركيب، اللون الأصلي والجديد…</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="بانر ثلاثي حتى ٣ بانرات متجاورة (تصبح شريطاً يمرَّر على الجوال). يدعم الصور المتحركة GIF. المقاس المناسب 800×1000 بكسل."><b>بانر ثلاثي</b><span>حتى ٣ بانرات متجاورة (تصبح شريطاً يمرَّر على الجوال). يدعم الصور المتحركة GIF. المقاس المناسب 800×1000 بكسل.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="روابط دائرية روابط دائرية لأقسامك أو ماركاتك، تُمرَّر أفقياً على الجوال. الصور المربعة 400×400 تظهر بأفضل شكل."><b>روابط دائرية</b><span>روابط دائرية لأقسامك أو ماركاتك، تُمرَّر أفقياً على الجوال. الصور المربعة 400×400 تظهر بأفضل شكل.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="منتج مميز اعرض منتجاً واحداً بمساحة كبيرة مع زر الإضافة للسلة. الصورة اختيارية، وإن تركتها تُستخدم صورة المنتج."><b>منتج مميز</b><span>اعرض منتجاً واحداً بمساحة كبيرة مع زر الإضافة للسلة. الصورة اختيارية، وإن تركتها تُستخدم صورة المنتج.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="معرض الفيديو صورة غلاف لكل فيديو، ويفتح الفيديو عند الضغط فقط (لا يبطئ المتجر). يقبل رابط يوتيوب أو رابطاً مباشراً لملف MP4."><b>معرض الفيديو</b><span>صورة غلاف لكل فيديو، ويفتح الفيديو عند الضغط فقط (لا يبطئ المتجر). يقبل رابط يوتيوب أو رابطاً مباشراً لملف MP4.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="فاصل مسافة أو خط أنيق بين الأقسام."><b>فاصل</b><span>مسافة أو خط أنيق بين الأقسام.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="بانر ديناميكي بانر عريض بصورة للكمبيوتر وصورة اختيارية للجوال، مع التحكم بمكان النص وارتفاع البانر ودرجة تعتيم الصورة. يدعم GIF المتحرك. المقاس المناسب 1920×800 (والجوال 900×1200)."><b>بانر ديناميكي</b><span>بانر عريض بصورة للكمبيوتر وصورة اختيارية للجوال، مع التحكم بمكان النص وارتفاع البانر ودرجة تعتيم الصورة. يدعم GIF المتحرك. المقاس المناسب 1920×800 (والجوال 900×1200).</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="تصنيفات مع خلفية صورة خلفية عريضة وعليها بطاقات أقسامك. المقاس المناسب للخلفية 1920×900 وللبطاقات 600×750."><b>تصنيفات مع خلفية</b><span>صورة خلفية عريضة وعليها بطاقات أقسامك. المقاس المناسب للخلفية 1920×900 وللبطاقات 600×750.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="منتجات مفصّلة بطاقات عريضة تعرض صورة المنتج واسمه ووصفاً قصيراً وسعره وزر الإضافة للسلة. مناسبة للمنتجات التي تحتاج شرحاً (إلكترونيات، عناية، أجهزة)."><b>منتجات مفصّلة</b><span>بطاقات عريضة تعرض صورة المنتج واسمه ووصفاً قصيراً وسعره وزر الإضافة للسلة. مناسبة للمنتجات التي تحتاج شرحاً (إلكترونيات، عناية، أجهزة).</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="عن المتجر قصة متجرك بصورة ونص ونقاط مميزة وتوقيع. يبني الثقة ويزيد التحويل."><b>عن المتجر</b><span>قصة متجرك بصورة ونص ونقاط مميزة وتوقيع. يبني الثقة ويزيد التحويل.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="روابط مخصصة بطاقات روابط نصية بأيقونة اختيارية: سياسة الشحن، دليل المقاسات، بطاقات الهدايا، تواصل واتساب… الأيقونة صورة صغيرة 96×96 (PNG بخلفية شفافة)."><b>روابط مخصصة</b><span>بطاقات روابط نصية بأيقونة اختيارية: سياسة الشحن، دليل المقاسات، بطاقات الهدايا، تواصل واتساب… الأيقونة صورة صغيرة 96×96 (PNG بخلفية شفافة).</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="عرض خاص مع عدّاد منتج واحد مع عدّاد تنازلي وزر الإضافة للسلة. يختفي القسم تلقائياً عند انتهاء العرض. لتطبيق الخصم فعلياً عدّل سعر المنتج أو أنشئ تخفيضاً من لوحة سلة."><b>عرض خاص مع عدّاد</b><span>منتج واحد مع عدّاد تنازلي وزر الإضافة للسلة. يختفي القسم تلقائياً عند انتهاء العرض. لتطبيق الخصم فعلياً عدّل سعر المنتج أو أنشئ تخفيضاً من لوحة سلة.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="فروع المتجر بطاقة لكل فرع مع العنوان والدوام وزر الاتصال وزر الاتجاهات. ضع رابط الفرع من خرائط قوقل (زر مشاركة ← نسخ الرابط)."><b>فروع المتجر</b><span>بطاقة لكل فرع مع العنوان والدوام وزر الاتصال وزر الاتجاهات. ضع رابط الفرع من خرائط قوقل (زر مشاركة ← نسخ الرابط).</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="نموذج التواصل نموذج يرسل رسالة العميل إلى واتساب المتجر (أو يفتح برنامج البريد لديه). لا تُحفظ أي بيانات. إن تركت رقم الواتساب فارغاً يُستخدم رقم الواتساب من إعدادات ماجيستي."><b>نموذج التواصل</b><span>نموذج يرسل رسالة العميل إلى واتساب المتجر (أو يفتح برنامج البريد لديه). لا تُحفظ أي بيانات. إن تركت رقم الواتساب فارغاً يُستخدم رقم الواتساب من إعدادات ماجيستي.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="محتوى متقدم كتل محتوى بعمود أو عمودين أو ثلاثة: عنوان ونص وصورة اختيارية ورابط. مناسب للسياسات، دليل المقاسات، طريقة الاستخدام، المكونات…"><b>محتوى متقدم</b><span>كتل محتوى بعمود أو عمودين أو ثلاثة: عنوان ونص وصورة اختيارية ورابط. مناسب للسياسات، دليل المقاسات، طريقة الاستخدام، المكونات…</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="معرض منتجات ديناميكي اختر من ٣ إلى ١٢ منتجاً تُعرض بشبكة تحريرية بأحجام مختلفة (Bento) أو شبكة متساوية، مع الاسم والسعر عند المرور."><b>معرض منتجات ديناميكي</b><span>اختر من ٣ إلى ١٢ منتجاً تُعرض بشبكة تحريرية بأحجام مختلفة (Bento) أو شبكة متساوية، مع الاسم والسعر عند المرور.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="ماركات متحركة شعارات الماركات أو الشركاء تتحرك بشكل مستمر وتتوقف عند المرور. استخدم صور PNG بخلفية شفافة بارتفاع 120 بكسل تقريباً."><b>ماركات متحركة</b><span>شعارات الماركات أو الشركاء تتحرك بشكل مستمر وتتوقف عند المرور. استخدم صور PNG بخلفية شفافة بارتفاع 120 بكسل تقريباً.</span><em>ماجيستي</em></li>
+<li class="sec is-mj" data-q="مميزات المتجر المحسنة حتى ٨ مزايا بأيقونات أنيقة جاهزة (أو ارفع أيقونتك)، بثلاثة أشكال: بطاقات، بسيط، أو داكن."><b>مميزات المتجر المحسنة</b><span>حتى ٨ مزايا بأيقونات أنيقة جاهزة (أو ارفع أيقونتك)، بثلاثة أشكال: بطاقات، بسيط، أو داكن.</span><em>ماجيستي</em></li>
+
+      </ul>
+    </section>
+
+    <section id="images">
+      <h2>مقاسات الصور</h2>
+      <p>استخدم صور JPG أو WebP بحجم أقل من 500 كيلوبايت لسرعة المتجر. الصور الأكبر تعمل لكنها تبطئ التحميل.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>القسم</th><th>الاستخدام</th><th>المقاس (بكسل)</th></tr></thead>
+        <tbody>
+          <tr><td>واجهة القصص</td><td>صورة عمودية أو أفقية</td><td>1600×2000 · 2400×1350</td></tr>
+          <tr><td>بانر ديناميكي</td><td>كمبيوتر · جوال</td><td>1920×800 · 900×1100</td></tr>
+          <tr><td>لوحات أقسام كبيرة</td><td>لكل لوحة</td><td>1200×1400</td></tr>
+          <tr><td>بانر ثلاثي</td><td>لكل بانر، يدعم GIF</td><td>800×1000</td></tr>
+          <tr><td>تصنيفات مع خلفية</td><td>الخلفية · البطاقة</td><td>1920×900 · 600×750</td></tr>
+          <tr><td>روابط دائرية</td><td>صورة مربعة</td><td>400×400</td></tr>
+          <tr><td>ماركات متحركة</td><td>PNG بخلفية شفافة</td><td>ارتفاع 120</td></tr>
+          <tr><td>روابط مخصصة</td><td>أيقونة PNG شفافة</td><td>96×96</td></tr>
+          <tr><td>تسوّق من المقاطع</td><td>فيديو MP4 عمودي</td><td>أقل من 8 ميجابايت</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="faq">
+      <h2>أسئلة شائعة</h2>
+      <div>
+        <details><summary>أضفت قسماً ولم يظهر في المتجر</summary><p>بعض الأقسام تُخفى تلقائياً إذا كانت فارغة: المعرض يحتاج منتجات، الماركات تحتاج شعارات، والتبويب بلا منتجات يُخفى. أضف المحتوى ثم احفظ وانشر.</p></details>
+        <details><summary>كيف أفعّل الوضع الليلي؟</summary><p>مفعّل تلقائياً. يظهر زر القمر في الهيدر، ويحفظ المتجر اختيار كل عميل. يمكنك إخفاء الزر من إعدادات ماجيستي.</p></details>
+        <details><summary>هل الثيم مناسب لغير الأزياء؟</summary><p>نعم. ماجيستي مصمم لكل أنواع المتاجر: مجوهرات، عطور وعناية، إلكترونيات، هدايا، وأكثر. غيّر الصور والنصوص والألوان فقط.</p></details>
+        <details><summary>أين تذهب رسائل نموذج التواصل؟</summary><p>تفتح للعميل محادثة واتساب مع رقم متجرك والرسالة مكتوبة، أو برنامج البريد إذا اخترت البريد. لا يحفظ الثيم أي بيانات.</p></details>
+        <details><summary>لماذا نافذة تسجيل الدخول بشكل مختلف؟</summary><p>نافذة الدخول صفحة من سلة نفسها ولا يمكن لأي ثيم تغيير محتواها. ماجيستي يلوّن إطارها وخلفيتها فقط.</p></details>
+        <details><summary>هل يدعم الإنجليزية؟</summary><p>نعم. الثيم عربي أصيل من اليمين لليسار ويدعم الإنجليزية، ويظهر زر اللغة والعملة إذا فعّلت تعدد اللغات في متجرك.</p></details>
+        <details><summary>العرض انتهى والقسم اختفى</summary><p>هذا مقصود: أقسام العدّاد تختفي تلقائياً عند انتهاء العرض. غيّر تاريخ الانتهاء لإظهارها من جديد.</p></details>
+      </div>
+    </section>
+
+    <section id="support">
+      <h2>الدعم الفني</h2>
+      <p>نرد على استفساراتك ونساعدك في تجهيز متجرك بالثيم.</p>
+      <div class="contact">
+        <div><small>واتساب</small><b id="c-wa">+966 53 762 4903</b><a href="https://wa.me/966537624903" target="_blank" rel="noopener">ابدأ محادثة واتساب</a></div>
+        <div><small>الموقع</small><b id="c-mail">wahajdesign.sa</b><a href="https://wahajdesign.sa" target="_blank" rel="noopener">زيارة الموقع</a></div>
+        <div><small>أوقات الرد</small><b style="direction:rtl">يومياً من 4 عصراً إلى 10 مساءً</b></div>
+      </div>
+    </section>
+  </main>
+</div>
+<footer>ماجيستي · ثيم سلة · الإصدار 1.0</footer>
+<script>
+(function(){
+  const q=document.getElementById('q'), items=[...document.querySelectorAll('#secs li')], cnt=document.getElementById('count');
+  let f='all';
+  const apply=()=>{const s=q.value.trim();let n=0;items.forEach(li=>{const okF=f==='all'||(f==='mj')===li.classList.contains('is-mj');const okQ=!s||li.dataset.q.includes(s);li.hidden=!(okF&&okQ);if(!li.hidden)n++});cnt.textContent=n+' قسماً'};
+  q.addEventListener('input',apply);
+  document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{f=b.dataset.f;document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed',x===b));apply()}));
+  apply();
+})();
+</script>
+
+</body>
+</html>
